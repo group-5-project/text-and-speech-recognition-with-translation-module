@@ -1,0 +1,104 @@
+#:kivy 2.1.0
+MDBoxLayout:
+    orientation: 'vertical'
+    MDLabel: 
+        text: 'Translator App'
+        font_style:'H3'
+        md_bg_color: .2,.2,.2,.5
+        text_color: .1,.1,.1,1
+    MDBoxLayout: 
+        orientation: 'vertical'
+        MDBoxLayout: 
+            orientation:'vertical'
+            MDBoxLayout: 
+                orientation:'vertical'
+                MDLabel: 
+                    padding: ['5dp','5dp']
+                    text: '[b]Translate from:[/b]'
+                    valign: 'top'
+                    markup: 'True'
+                    text_size: self.size
+                MDTextField: 
+                    id: usertext
+                    hint_text: "Enter Text:"
+                    hint_text_color: .1,.1,.1,1
+                    multiline: False
+                    mode: 'rectangle'
+                    line_color_normal: .2,.2,.2,1
+                    on_text_validate: app.get_usertext()
+                MDDropDownItem: 
+                    id: drop_item
+                    pos_hint: {'center_x': .5}
+                    text: 'Detected Language'
+                    on_press: app.menu.open()
+    MDFloatLayout: 
+        MDRectangleFlatIconButton: 
+            icon: "microphone-outline"
+            # microphone
+            text: "Speak"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos: 200,300
+            on_press: app.listen()
+        MDRectangleFlatIconButton: 
+            icon: "camera"
+            # camera-iris
+            text: "Capture"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos: "500sp","300sp"
+    MDRectangleFlatButton: 
+        text: "Translate"
+        theme_text_color: "Custom"
+        text_color: "black"
+        line_color: "grey"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        md_bg_color: "grey"
+    MDBoxLayout: 
+        orientation: 'vertical'
+        MDBoxLayout: 
+            orientation:'vertical'
+            MDBoxLayout: 
+                orientation:'vertical'
+                MDLabel: 
+                    padding: ['5dp','5dp']
+                    text: '[b]Translate to:[/b]'
+                    valign: 'top'
+                    markup: 'True'
+                    text_size: self.size
+                MDLabel: 
+                    id: translated
+                    text: 'Translated Text!'
+                    line_color: .1,.1,.1,1
+                MDDropDownItem: 
+                    id: drop_item
+                    pos_hint: {'center_x': .5}
+                    text: 'Select Language'
+                    on_press: app.menu.open()
+    MDFloatLayout: 
+        MDRectangleFlatIconButton: 
+            icon: "volume-off"
+            # volume-high
+            text: "Listen"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos: 200,30
+            on_press: app.speak()
+        MDRectangleFlatIconButton: 
+            icon: "swap-vertical"
+            text: "Swap"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos: 500,30
