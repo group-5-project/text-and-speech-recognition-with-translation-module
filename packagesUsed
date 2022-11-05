@@ -1,3 +1,8 @@
 pyaudio
 speechreognition
-pyttsx3
+easyocr
+gtts
+playsound
+
+Notosans supported lang:
+hindi, african, english, swahili
