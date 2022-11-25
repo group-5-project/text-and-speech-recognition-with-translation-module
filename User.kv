@@ -1,0 +1,120 @@
+#:kivy 2.1.0
+MDBoxLayout:
+    orientation: 'vertical'
+    MDBoxLayout:
+        orientation: 'horizontal'
+        MDIcon:
+            icon: "translate-variant"
+            font_size: "100sp"
+        MDLabel:
+            pos: self.parent.pos
+            size: self.parent.size
+            text: ' Translator App'
+            font_style:'H3'
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            orientation:'vertical'
+            MDBoxLayout:
+                orientation:'vertical'
+                MDLabel:
+                    padding: ['5dp','5dp']
+                    text: '[b]Translate from:[/b]'
+                    valign: 'top'
+                    markup: 'True'
+                    text_size: self.size
+                MDTextField:
+                    id: usertext1
+                    hint_text: "Enter Text:"
+                    hint_text_color: .1,.1,.1,1
+                    multiline: False
+                    mode: 'rectangle'
+                    line_color_normal: .2,.2,.2,1
+                    on_text_validate: app.returnText()
+                MDRaisedButton:
+                    id: language1
+                    pos_hint: {'center_x': .5}
+                    text: 'Detected Language'
+                    md_bg_color: 'grey'
+                    text_color: 'white'
+                    on_release: app.dropdown1()
+    MDFloatLayout:
+        MDRectangleFlatIconButton:
+            id: mic
+            icon: "microphone-outline"
+            # microphone
+            text: "Speak"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos_hint: {'center_x': .32,'center_y':.5}
+            on_press: app.listen()
+        MDRectangleFlatIconButton:
+            id: cam
+            icon: "camera"
+            # camera-iris
+            text: "Capture"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos_hint: {'center_x': .68,'center_y':.5}
+            on_press: app.readtxt()
+
+    MDRectangleFlatButton:
+        text: "Translate"
+        theme_text_color: "Custom"
+        pos_hint: {"center_x": .5, "center_y": .5}
+        md_bg_color: "black"
+        text_color: "white"
+        on_press: app.translate_text(language2.text)
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDBoxLayout:
+            orientation:'vertical'
+            MDBoxLayout:
+                orientation:'vertical'
+                MDLabel:
+                    padding: ['5dp','5dp']
+                    text: '[b]Translate to:[/b]'
+                    valign: 'top'
+                    markup: 'True'
+                    text_size: self.size
+                MDLabel:
+                    id: usertext2
+                    text: 'Translated Text!'
+                    line_color: .1,.1,.1,1
+                MDRaisedButton:
+                    id: language2
+                    pos_hint: {'center_x': .5}
+                    text: 'Select Language'
+                    md_bg_color: 'grey'
+                    text_color: 'white'
+                    on_release: app.dropdown2()
+    MDFloatLayout:
+        MDRectangleFlatIconButton:
+            id: listen
+            icon: "volume-off"
+            # volume-high
+            text: "Listen"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos_hint: {'center_x': .32,'center_y':.25}
+            on_press: app.speak()
+        MDRectangleFlatIconButton:
+            id: rev
+            icon: "swap-vertical"
+            text: "Swap"
+            theme_text_color: "Custom"
+            text_color: "black"
+            line_color: "grey"
+            theme_icon_color: "Custom"
+            icon_color: "black"
+            pos_hint: {'center_x': .68,'center_y':.25}
+            on_release: app.swap_lang()
